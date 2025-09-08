@@ -33,7 +33,7 @@ def get_credentials():
         
 
     else:
-        print(f"Error getting credentials: {response.get("message")}")
+        print(f"Error getting credentials: {response.get('message')}")
         return None
 
 def get_product_list():
