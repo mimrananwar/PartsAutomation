@@ -124,8 +124,8 @@ def initialize_browser(url=None, profile="Profile 2"):
         
         # Setup Chrome options with temporary directory
         options = webdriver.ChromeOptions()
-        options.add_argument(f"--user-data-dir={temp_dir}")
-        options.add_argument(f"--profile-directory={temp_profile_name}")
+        #options.add_argument(f"--user-data-dir={temp_dir}")
+        #options.add_argument(f"--profile-directory={temp_profile_name}")
         
         # Add stability and compatibility flags
         options.add_argument("--disable-dev-shm-usage")
@@ -409,3 +409,4 @@ if __name__ == "__main__":
     else:
 
         print("Failed to initialize browser.")
+
