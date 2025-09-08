@@ -23,23 +23,20 @@ from selenium.common.exceptions import (
 from selenium.webdriver.common.action_chains import ActionChains
 #from selenium_stealth import stealth
 
-
-
-
-
-
-
 def initialize_browser(url=None, profile="Profile 2"):
         """Initialize Chrome browser with specified profile"""
         temp_dir = tempfile.mkdtemp(prefix="chrome_session_")
 
         # Setup Chrome options with temporary directory
         options = webdriver.ChromeOptions()
-        options.add_argument(f"--user-data-dir={temp_dir}") # isolated profile
+        #options.add_argument(f"--user-data-dir={temp_dir}") # isolated profile
         #options.add_argument(f"--profile-directory={temp_profile_name}")
         
         # Add stability and compatibility flags
         options.add_argument("--disable-dev-shm-usage")
+        options.add_argument("--disable-gpu")
+        options.add_argument("--disable-software-rasterizer")
+        options.add_argument("--use-gl=swiftshader")
         options.add_argument("--no-sandbox")
         options.add_argument("--disable-gpu")
         options.add_argument("--disable-software-rasterizer")
@@ -82,7 +79,7 @@ def initialize_browser(url=None, profile="Profile 2"):
         # Store temp directory reference for cleanup
         driver._temp_dir = temp_dir
         
-        print(f"Chrome browser initialized with temporary copy of {profile_to_use}")
+        print(f"Chrome browser initialized with temporary copy of {profile}")
         
         # Navigate to URL if provided
         if url:
@@ -310,6 +307,7 @@ if __name__ == "__main__":
     else:
 
         print("Failed to initialize browser.")
+
 
 
 
