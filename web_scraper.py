@@ -21,7 +21,7 @@ from selenium.common.exceptions import (
     TimeoutException,
 )
 from selenium.webdriver.common.action_chains import ActionChains
-from selenium_stealth import stealth
+#from selenium_stealth import stealth
 
 def kill_chrome_processes():
     """Kill existing Chrome processes to prevent conflicts"""
@@ -407,4 +407,5 @@ if __name__ == "__main__":
             # Always clean up, even if an error occurs
             cleanup_browser(driver)
     else:
+
         print("Failed to initialize browser.")
