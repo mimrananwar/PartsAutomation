@@ -29,7 +29,7 @@ def initialize_browser(url=None, profile=None):
 
         # Setup Chrome options with temporary directory
         options = webdriver.ChromeOptions()
-        options.add_argument(f"--user-data-dir={temp_dir}") # isolated profile
+        #options.add_argument(f"--user-data-dir={temp_dir}") # isolated profile
         #options.add_argument(f"--profile-directory={temp_profile_name}")
         
         # Add stability and compatibility flags
@@ -307,6 +307,7 @@ if __name__ == "__main__":
     else:
 
         print("Failed to initialize browser.")
+
 
 
 
