@@ -42,7 +42,7 @@ def get_product_list():
         print("Product list retrieved successfully.")
         return response.get("data")
     else:
-        print(f"Error getting product list: {response.get("message")}")
+        print(f"Error getting product list: {response.get('message')}")
         return None
 
 def add_products(products):
@@ -52,7 +52,7 @@ def add_products(products):
         print("Products added successfully.")
         return True
     else:
-        print(f"Error adding products: {response.get("message")}")
+        print(f"Error adding products: {response.get('message')}")
         return False
 
 def update_product(product_id, new_qty=None, new_price=None, new_status=None):
@@ -69,7 +69,7 @@ def update_product(product_id, new_qty=None, new_price=None, new_status=None):
         print(f"Product {product_id} updated successfully.")
         return True
     else:
-        print(f"Error updating product {product_id}: {response.get("message")}")
+        print(f"Error updating product {product_id}: {response.get('message')}")
         return False
 
 if __name__ == "__main__":
