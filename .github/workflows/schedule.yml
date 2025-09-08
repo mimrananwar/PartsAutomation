@@ -20,8 +20,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y unzip xvfb libxi6 libgconf-2-4
-          sudo apt-get install -y chromium-browser chromium-chromedriver
+          sudo apt-get install -y unzip xvfb chromium-browser chromium-chromedriver
           pip install -r requirements.txt
 
       - name: Run script
