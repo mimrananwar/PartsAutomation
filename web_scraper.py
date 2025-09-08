@@ -34,6 +34,8 @@ def initialize_browser(url=None, profile=None):
         
         # Add stability and compatibility flags
         options.add_argument("--disable-dev-shm-usage")
+        options.add_argument("--headless=new")
+        options.add_argument("--window-size=1920,1080")
         options.add_argument("--disable-gpu")
         options.add_argument("--disable-software-rasterizer")
         options.add_argument("--use-gl=swiftshader")
@@ -307,6 +309,7 @@ if __name__ == "__main__":
     else:
 
         print("Failed to initialize browser.")
+
 
 
 
