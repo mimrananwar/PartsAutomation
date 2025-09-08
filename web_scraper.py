@@ -95,17 +95,7 @@ def initialize_browser(url=None, profile="Profile 2"):
         
         return driver
         
-        except Exception as e:
-            print(f"Failed to initialize browser: {e}")
-            # Clean up temp directory if driver creation failed
-            if temp_dir and os.path.exists(temp_dir):
-                try:
-                    shutil.rmtree(temp_dir)
-                    print(f"Cleaned up temporary directory: {temp_dir}")
-                except Exception as cleanup_error:
-                    print(f"Error cleaning up temp directory: {cleanup_error}")
-            return None
-
+       
 
 def login(driver, username, password):
     try:
@@ -320,6 +310,7 @@ if __name__ == "__main__":
     else:
 
         print("Failed to initialize browser.")
+
 
 
 
