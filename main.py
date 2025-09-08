@@ -32,10 +32,11 @@ def main():
     # Assuming the first row is header, skip it
     product_list = []
     if len(product_list_raw) > 1:
+        print ("Product List Received")
         for row in product_list_raw:
         
          if len(row) >= 1: # Ensure row has at least Product ID and Product Name
-                print("name", row[0])
+                #print("name", row[0])
                 product_list.append({
                     "name": row[0]                                   
                 })
