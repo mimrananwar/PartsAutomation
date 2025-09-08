@@ -1,0 +1,5 @@
+# Core dependencies for PLU Tool
+requests==2.32.4
+selenium==4.34.2
+webdriver-manager==4.0.2
+psutil==6.1.1
