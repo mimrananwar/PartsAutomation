@@ -30,7 +30,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 
 
 def initialize_browser(url=None, profile="Profile 2"):
-    """Initialize Chrome browser with specified profile"""
+        """Initialize Chrome browser with specified profile"""
         temp_dir = tempfile.mkdtemp(prefix="chrome_session_")
 
         # Setup Chrome options with temporary directory
@@ -320,5 +320,6 @@ if __name__ == "__main__":
     else:
 
         print("Failed to initialize browser.")
+
 
 
