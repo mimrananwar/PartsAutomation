@@ -23,7 +23,7 @@ from selenium.common.exceptions import (
 from selenium.webdriver.common.action_chains import ActionChains
 #from selenium_stealth import stealth
 
-def initialize_browser(url=None, profile="Profile 2"):
+def initialize_browser(url=None, profile=None):
         """Initialize Chrome browser with specified profile"""
         temp_dir = tempfile.mkdtemp(prefix="chrome_session_")
 
@@ -307,6 +307,7 @@ if __name__ == "__main__":
     else:
 
         print("Failed to initialize browser.")
+
 
 
 
