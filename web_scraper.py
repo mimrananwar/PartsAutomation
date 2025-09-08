@@ -23,108 +23,19 @@ from selenium.common.exceptions import (
 from selenium.webdriver.common.action_chains import ActionChains
 #from selenium_stealth import stealth
 
-def kill_chrome_processes():
-    """Kill existing Chrome processes to prevent conflicts"""
-    killed_count = 0
-    try:
-        for proc in psutil.process_iter(['pid', 'name']):
-            if proc.info['name'] and 'chrome.exe' in proc.info['name'].lower():
-                try:
-                    print(f"Killing Chrome process: PID {proc.info['pid']}")
-                    proc.kill()
-                    killed_count += 1
-                except (psutil.NoSuchProcess, psutil.AccessDenied):
-                    pass
-        
-        if killed_count > 0:
-            print(f"Killed {killed_count} Chrome processes")
-            time.sleep(2)  # Wait for processes to fully terminate
-        else:
-            print("No Chrome processes found to kill")
-            
-    except Exception as e:
-        print(f"Error killing Chrome processes: {e}")
 
 
-def get_chrome_user_data_dir():
-    """Get Chrome user data directory automatically"""
-    username = os.getenv('USERNAME')
-    user_data_dir = rf"C:\Users\{username}\AppData\Local\Google\Chrome\User Data"
-    print(f"Using Chrome user data directory: {user_data_dir}")
-    return user_data_dir
 
-def find_available_profiles(user_data_dir):
-    """Find available Chrome profiles"""
-    profiles = []
-    try:
-        if os.path.exists(user_data_dir):
-            for item in os.listdir(user_data_dir):
-                if item.startswith('Profile ') or item == 'Default':
-                    profile_path = os.path.join(user_data_dir, item)
-                    if os.path.isdir(profile_path):
-                        profiles.append(item)
-            print(f"Available profiles: {profiles}")
-    except Exception as e:
-        print(f"Error finding profiles: {e}")
-    
-    return profiles
 
-def create_temp_profile(source_profile_dir, profile_name):
-    """Create a temporary copy of the Chrome profile for automation"""
-    try:
-        # Create temporary directory
-        temp_dir = tempfile.mkdtemp(prefix="chrome_automation_")
-        temp_profile_dir = os.path.join(temp_dir, profile_name)
-        
-        # Copy profile data to temp directory
-        if os.path.exists(source_profile_dir):
-            print(f"Copying profile from {source_profile_dir} to {temp_profile_dir}")
-            shutil.copytree(source_profile_dir, temp_profile_dir)
-        else:
-            # Create empty profile directory
-            os.makedirs(temp_profile_dir, exist_ok=True)
-            print(f"Created new temporary profile at {temp_profile_dir}")
-        
-        return temp_dir, profile_name
-        
-    except Exception as e:
-        print(f"Error creating temporary profile: {e}")
-        # Fallback to simple temp directory
-        temp_dir = tempfile.mkdtemp(prefix="chrome_simple_")
-        return temp_dir, "Default"
 
 
 def initialize_browser(url=None, profile="Profile 2"):
     """Initialize Chrome browser with specified profile"""
-    temp_dir = None
-    try:
-        # Kill existing Chrome processes to prevent conflicts
-        print("Cleaning up existing Chrome processes...")
-        #kill_chrome_processes()
-        
-        # Get user data directory and find available profiles
-        user_data_dir = get_chrome_user_data_dir()
-        available_profiles = find_available_profiles(user_data_dir)
-        
-        # Choose profile
-        profile_to_use = profile
-        if profile not in available_profiles:
-            if available_profiles:
-                profile_to_use = available_profiles[0]
-                print(f"{profile} not found, using: {profile_to_use}")
-            else:
-                profile_to_use = "Default"
-                print("No profiles found, using Default")
-        
-        # Create temporary copy of the profile to avoid conflicts
-        source_profile_path = os.path.join(user_data_dir, profile_to_use)
-        temp_dir, temp_profile_name = create_temp_profile(source_profile_path, profile_to_use)
-        
-        print(f"Using temporary profile directory: {temp_dir}")
-        
+        temp_dir = tempfile.mkdtemp(prefix="chrome_session_")
+
         # Setup Chrome options with temporary directory
         options = webdriver.ChromeOptions()
-        #options.add_argument(f"--user-data-dir={temp_dir}")
+        options.add_argument(f"--user-data-dir={temp_dir}") # isolated profile
         #options.add_argument(f"--profile-directory={temp_profile_name}")
         
         # Add stability and compatibility flags
@@ -409,4 +320,5 @@ if __name__ == "__main__":
     else:
 
         print("Failed to initialize browser.")
+
 
