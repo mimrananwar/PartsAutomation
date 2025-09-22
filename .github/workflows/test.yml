@@ -1,8 +1,8 @@
 name: Test Slack API
 
 on:
-  schedule:
-    - cron: "0 16 * * *"   # every day at 00:00 GMT
+  #schedule:
+  #  - cron: "0 16 * * *"   # every day at 00:00 GMT
   workflow_dispatch:       # allow manual trigger too
   repository_dispatch:
     types: [manual_trigger]
