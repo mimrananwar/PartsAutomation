@@ -2,7 +2,7 @@ import requests
 import json
 
 def Send_Msg(success=True, Types="Login"):
-    webhook_url = "https://hooks.slack.com/services/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"
+    webhook_url = SLACKAPI
 
     if Types.lower() == "login":
         if success:
@@ -46,4 +46,5 @@ if __name__ == "__main__":
 
     # update_product("PROD001", 12, 10.50)
     pass
+
 
