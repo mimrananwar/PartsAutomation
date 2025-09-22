@@ -1,8 +1,10 @@
 import requests
 import json
+import os
+
 
 def Send_Msg(success=True, Types="Login"):
-    webhook_url = SLACKAPI
+    webhook_url = os.environ.get("SLACKAPI")
 
     if Types.lower() == "login":
         if success:
@@ -33,6 +35,7 @@ def Send_Msg(success=True, Types="Login"):
         print("Failed to post message, error:", response.status_code, response.text)
 if __name__ == "__main__":
    Send_Msg()
+
 
 
 
