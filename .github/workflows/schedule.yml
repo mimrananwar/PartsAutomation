@@ -30,5 +30,7 @@ jobs:
            pip install -r requirements.txt
 
       - name: Run Automation App
+        env:
+          SLACKAPI: ${{ secrets.SLACKAPI }}
         run: |
           python main.py
