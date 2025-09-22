@@ -32,19 +32,7 @@ def Send_Msg(success=True, Types="Login"):
     else:
         print("Failed to post message, error:", response.status_code, response.text)
 if __name__ == "__main__":
-    # Example Usage:
-    # credentials = get_credentials()
-    # if credentials:
-    #     print("Credentials:", credentials)
+   Send_Msg()
 
-    # product_list = get_product_list()
-    # if product_list:
-    #     print("Product List:", product_list)
-
-    # new_products = [["PROD001", "Test Product 1", 10, 9.99, "2025-08-10 10:00:00", "In Stock"]]
-    # add_products(new_products)
-
-    # update_product("PROD001", 12, 10.50)
-    pass
 
 
