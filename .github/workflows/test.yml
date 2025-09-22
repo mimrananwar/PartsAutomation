@@ -1,0 +1,28 @@
+name: Run Script Daily
+
+on:
+  schedule:
+    - cron: "0 16 * * *"   # every day at 00:00 GMT
+  workflow_dispatch:       # allow manual trigger too
+  repository_dispatch:
+    types: [manual_trigger]
+
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.9"  # or your required version
+      - name: Install dependencies
+        run: |
+           pip install -r requirements.txt
+
+      - name: Run Automation App
+        run: |
+          python Post_to_slack.py
