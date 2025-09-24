@@ -192,7 +192,7 @@ def search_product(driver, product_name):
 
         print(f"Searched for {product_name}")
         
-        time.sleep(3)
+        time.sleep(1)
         try:
             first_link = WebDriverWait(driver, 10).until(
                 EC.element_to_be_clickable((By.CSS_SELECTOR, "li.item.product:first-of-type a"))
@@ -204,7 +204,7 @@ def search_product(driver, product_name):
         # Click the element
         if first_link:
             first_link.click()
-            time.sleep(3)
+            time.sleep(1)
 
         WebDriverWait(driver, 10).until(
            EC.presence_of_element_located((By.CLASS_NAME, 'm-stock__current-stock-qty')) # Placeholder for product list ID
@@ -309,6 +309,7 @@ if __name__ == "__main__":
     else:
 
         print("Failed to initialize browser.")
+
 
 
 
