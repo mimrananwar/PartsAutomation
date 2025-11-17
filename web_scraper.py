@@ -111,7 +111,7 @@ def login(driver, username, password):
         print("Password field found")      
         password_field.send_keys(password)
        
-        time.sleep(30)
+        time.sleep(10)
         human = True
 
         while not human:
@@ -228,7 +228,7 @@ def extract_product_data(driver):
         )
         if quantity_element:
             quantity = quantity_element.text.strip()
-            print(f"Quantity: {quantity}")
+            #print(f"Quantity: {quantity}")
 
         print("Searching for product Price...")
         price_element = WebDriverWait(driver, 10).until(
@@ -237,7 +237,7 @@ def extract_product_data(driver):
         if price_element:
             # Correct the syntax from .text,strip() to .text.strip()
             price = price_element.text.strip()
-            print(f"Price: {price}")
+            #print(f"Price: {price}")
 
         print("Searching for product List Price...")
         listprice_element = WebDriverWait(driver, 10).until(
@@ -246,7 +246,7 @@ def extract_product_data(driver):
         if listprice_element:
             # Correct the syntax from .text,strip() to .text.strip()
             listprice = listprice_element.text.strip()
-            print(f"List Price: {listprice}")
+            #print(f"List Price: {listprice}")
 
         # Return the collected data
         return {"quantity": quantity, "price": price, "listprice": listprice}
@@ -309,6 +309,7 @@ if __name__ == "__main__":
     else:
 
         print("Failed to initialize browser.")
+
 
 
 
