@@ -209,7 +209,7 @@ def search_product(driver, product_name):
         WebDriverWait(driver, 10).until(
            EC.presence_of_element_located((By.CLASS_NAME, 'm-stock__current-stock-qty')) # Placeholder for product list ID
         )
-        print(f"Found {product_name}")
+        #print(f"Found {product_name}")
             
         return True
     except Exception as e:
@@ -222,7 +222,7 @@ def extract_product_data(driver):
     listprice = "N/A"
     try:
         # Wait for all elements to be present using a single WebDriverWait call
-        print("Searching for product Qty...")
+        #print("Searching for product Qty...")
         quantity_element = WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.CLASS_NAME, 'm-stock__current-stock-qty'))
         )
@@ -230,7 +230,7 @@ def extract_product_data(driver):
             quantity = quantity_element.text.strip()
             #print(f"Quantity: {quantity}")
 
-        print("Searching for product Price...")
+        #print("Searching for product Price...")
         price_element = WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.CLASS_NAME, 'm-price-box__price--special'))
         )
@@ -239,7 +239,7 @@ def extract_product_data(driver):
             price = price_element.text.strip()
             #print(f"Price: {price}")
 
-        print("Searching for product List Price...")
+        #print("Searching for product List Price...")
         listprice_element = WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.CLASS_NAME, 'm-price-box__price--list-price'))
         )
@@ -309,6 +309,7 @@ if __name__ == "__main__":
     else:
 
         print("Failed to initialize browser.")
+
 
 
 
